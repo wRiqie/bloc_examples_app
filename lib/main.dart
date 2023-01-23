@@ -1,12 +1,9 @@
 import 'package:bloc_app/login/business_logic/blocs/auth_bloc/auth_bloc.dart';
 import 'package:bloc_app/login/business_logic/cubits/checkbox_cubit.dart';
 import 'package:bloc_app/login/business_logic/cubits/password_obscure_cubit.dart';
-import 'package:bloc_app/login/business_logic/services/hive_service.dart';
-import 'package:bloc_app/login/business_logic/services/session_service.dart';
 import 'package:bloc_app/login/core/dependency_injector/dependency_injector.dart';
 import 'package:bloc_app/login/data/provider/fake_api.dart';
 import 'package:bloc_app/login/data/repositories/auth_repository.dart';
-import 'package:bloc_app/login/presentation/screens/logged_home_screen.dart';
 import 'package:bloc_app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';

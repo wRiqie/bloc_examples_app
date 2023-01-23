@@ -3,8 +3,6 @@ import 'package:bloc_app/login/business_logic/services/hive_service.dart';
 import 'package:bloc_app/login/business_logic/services/session_service.dart';
 import 'package:bloc_app/login/core/constants.dart';
 import 'package:bloc_app/login/data/models/auth_model.dart';
-import 'package:bloc_app/login/presentation/screens/logged_home_screen.dart';
-import 'package:bloc_app/login/presentation/screens/login_screen.dart';
 import 'package:bloc_app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
