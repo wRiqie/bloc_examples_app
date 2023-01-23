@@ -1,0 +1,1 @@
+typedef Condition<T> = bool Function(T e);
