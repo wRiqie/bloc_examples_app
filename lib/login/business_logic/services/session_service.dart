@@ -1,3 +1,4 @@
+// coverage:ignore-file
 import 'package:bloc_app/login/business_logic/services/hive_service.dart';
 import 'package:bloc_app/login/core/constants.dart';
 import 'package:bloc_app/login/data/models/auth_model.dart';

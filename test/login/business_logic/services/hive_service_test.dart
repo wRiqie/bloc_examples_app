@@ -16,45 +16,57 @@ void main() {
   });
 
   group('[Hive Service]', () {
+    test('expect open two equal boxes when call box getter with _box = null', () async {
+      final boxStorage1 = await service.box;
+      final boxStorage2 = await service.box;
+      expect(boxStorage1.hashCode, boxStorage2.hashCode);
+    });
+
     test('expect success add "1"', () async {
+      final boxStorage = await service.box;
       await service.add(1);
-      expect(service.box.values.isEmpty, false);
-      expect(service.box.values.first, 1);
+      expect(boxStorage.values.isEmpty, false);
+      expect(boxStorage.values.first, 1);
     });
 
     test('expect success addAll', () async {
+      final boxStorage = await service.box;
       await service.addAll([1, 2, 3]);
-      expect(service.box.values.isEmpty, false);
-      expect(service.box.values, [1, 2, 3]);
+      expect(boxStorage.values.isEmpty, false);
+      expect(boxStorage.values, [1, 2, 3]);
     });
 
     test('expect try addAll empty', () async {
+      final boxStorage = await service.box;
       await service.addAll([]);
-      expect(service.box.values.isEmpty, true);
-      expect(service.box.values, []);
+      expect(boxStorage.values.isEmpty, true);
+      expect(boxStorage.values, []);
     });
 
     test('expect to success put {"n": 1}', () async {
+      final boxStorage = await service.box;
       await service.put('n', 1);
-      expect(service.box.values.isEmpty, false);
-      expect(service.box.keys.first, 'n');
-      expect(service.box.values.first, 1);
+      expect(boxStorage.values.isEmpty, false);
+      expect(boxStorage.keys.first, 'n');
+      expect(boxStorage.values.first, 1);
     });
 
     test('expect to try putAll empty', () async {
+      final boxStorage = await service.box;
       await service.putAll({});
-      expect(service.box.keys.isEmpty, true);
-      expect(service.box.values.isEmpty, true);
+      expect(boxStorage.keys.isEmpty, true);
+      expect(boxStorage.values.isEmpty, true);
     });
 
     test('expect to success putAll', () async {
+      final boxStorage = await service.box;
       await service.putAll({
         'n1': 1,
         'n2': 2,
       });
-      expect(service.box.values.isEmpty, false);
-      expect(service.box.keys, ['n1', 'n2']);
-      expect(service.box.values, [1, 2]);
+      expect(boxStorage.values.isEmpty, false);
+      expect(boxStorage.keys, ['n1', 'n2']);
+      expect(boxStorage.values, [1, 2]);
     });
 
     test('expect return null when the box is empty when trying findOne',
@@ -121,37 +133,42 @@ void main() {
     test(
         'it is expected that nothing will happen when try to delete a non-existent item by key',
         () async {
+      final boxStorage = await service.box;
       await service.deleteByKey('1');
-      expect(service.box.values, []);
+      expect(boxStorage.values, []);
     });
 
     test('expect to delete "2" by the key', () async {
+      final boxStorage = await service.box;
       await service.putAll({
         'n1': 1,
         'n2': 2,
       });
       await service.deleteByKey('n2');
-      expect(service.box.values, [1]);
+      expect(boxStorage.values, [1]);
     });
 
     test('expect delete [2, 4] by condition when use deleteWhere', () async {
+      final boxStorage = await service.box;
       await service.addAll([1, 2, 3, 4]);
       await service.deleteWhere((e) => e % 2 == 0);
-      expect(service.box.values, [1, 3]);
+      expect(boxStorage.values, [1, 3]);
     });
 
     test(
         'it is expected that nothing will happen when try to deleteWhere  a non-existent item by key',
         () async {
+      final boxStorage = await service.box;
       await service.addAll([1]);
       await service.deleteWhere((e) => e % 2 == 0);
-      expect(service.box.values, [1]);
+      expect(boxStorage.values, [1]);
     });
 
     test('Close box', () async {
+      final boxStorage = await service.box;
       await service.add(1);
       await service.close();
-      expect(service.box.isOpen, false);
+      expect(boxStorage.isOpen, false);
     });
   });
 }

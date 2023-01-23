@@ -14,6 +14,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:uuid/uuid.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -237,15 +238,42 @@ class _LoginScreenState extends State<LoginScreen> with ValidationsMixin {
                           children: [
                             SocialLoginButton(
                               icon: 'assets/img/google.png',
-                              onTap: () {},
+                              onTap: () {
+                                bloc.add(
+                                  AuthSignin(
+                                    AuthModel(
+                                      email: 'gUser@gmail.com',
+                                      password: const Uuid().v4(),
+                                    ),
+                                  ),
+                                );
+                              },
                             ),
                             SocialLoginButton(
                               icon: 'assets/img/facebook.png',
-                              onTap: () {},
+                              onTap: () {
+                                bloc.add(
+                                  AuthSignin(
+                                    AuthModel(
+                                      email: 'fUser@gmail.com',
+                                      password: const Uuid().v4(),
+                                    ),
+                                  ),
+                                );
+                              },
                             ),
                             SocialLoginButton(
                               icon: 'assets/img/github.png',
-                              onTap: () {},
+                              onTap: () {
+                                bloc.add(
+                                  AuthSignin(
+                                    AuthModel(
+                                      email: 'gitUser@gmail.com',
+                                      password: const Uuid().v4(),
+                                    ),
+                                  ),
+                                );
+                              },
                             ),
                           ],
                         ),

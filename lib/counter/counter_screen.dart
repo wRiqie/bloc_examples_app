@@ -39,7 +39,7 @@ class _CounterScreenState extends State<CounterScreen> {
               },
               icon: const Icon(
                 Icons.remove,
-                size: 32,
+                size: 28,
                 color: Colors.blue,
               ),
             ),
@@ -62,7 +62,7 @@ class _CounterScreenState extends State<CounterScreen> {
               },
               icon: const Icon(
                 Icons.add,
-                size: 32,
+                size: 28,
                 color: Colors.blue,
               ),
             ),

@@ -9,9 +9,9 @@ class HiveService<T> {
 
   HiveService(this._boxName);
 
-  Box<T> get box {
+  Future<Box<T>> get box async {
     if(_box == null) {
-      _openBox();
+      await _openBox();
     }
     return _box!;
   }
@@ -21,59 +21,57 @@ class HiveService<T> {
   }
 
   Future<int> add(T value) async {
-    await _openBox();
-    return _box!.add(value);
+    final boxStorage = await box;
+    return boxStorage.add(value);
   }
 
   Future<Iterable<int>> addAll(List<T> values) async {
-    await _openBox();
-    return _box!.addAll(values);
+    final boxStorage = await box;
+    return boxStorage.addAll(values);
   }
 
   Future<void> put(dynamic key, T value) async {
-    await _openBox();
-    return _box!.put(key, value);
+    final boxStorage = await box;
+    return boxStorage.put(key, value);
   }
 
   Future<void> putAll(Map<dynamic, T> values) async {
-    await _openBox();
-    return _box!.putAll(values);
+    final boxStorage = await box;
+    return boxStorage.putAll(values);
   }
 
   Future<T?> findOne(Condition<T> condition) async {
-    await _openBox();
-    return _box!.values.firstWhereOrNull(condition);
+    final boxStorage = await box;
+    return boxStorage.values.firstWhereOrNull(condition);
   }
 
   Future<List<T>> findAll() async {
-    await _openBox();
-    return _box!.values.toList();
+    final boxStorage = await box;
+    return boxStorage.values.toList();
   }
 
   Future<List<T>> findAllWhere(Condition<T> condition) async {
-    await _openBox();
-    return _box!.values.where(condition).toList();
+    final boxStorage = await box;
+    return boxStorage.values.where(condition).toList();
   }
 
   Future<T?> findByKey(dynamic key) async {
-    await _openBox();
-    print(_box!.keys);
-    print(_box!.values);
-    return _box!.get(key);
+    final boxStorage = await box;
+    return boxStorage.get(key);
   }
 
   Future<void> deleteByKey(dynamic key) async {
-    await _openBox();
-    await _box!.delete(key);
+    final boxStorage = await box;
+    await boxStorage.delete(key);
   }
   
   Future<void> deleteWhere(Condition<T> condition) async {
-    await _openBox();
-    final values = _box!.values.where(condition).toList();
+    final boxStorage = await box;
+    final values = boxStorage.values.where(condition).toList();
     
     for (var value in values) {
-      final index = _box!.values.toList().indexOf(value);
-      await _box!.deleteAt(index);
+      final index = boxStorage.values.toList().indexOf(value);
+      await boxStorage.deleteAt(index);
     }
   }
 
