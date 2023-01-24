@@ -13,11 +13,13 @@ import '../../../../mocks.dart';
 void main() {
   group('[AuthBloc]', () {
     late FakeApiMock fakeApiMock;
+    late FirebaseApiMock firebaseApiMock;
     late AuthBloc authBloc;
 
     setUp(() {
       fakeApiMock = FakeApiMock();
-      final repository = AuthRepository(fakeApiMock);
+      firebaseApiMock = FirebaseApiMock();
+      final repository = AuthRepository(fakeApiMock, firebaseApiMock);
       authBloc = AuthBloc(repository);
     });
 
