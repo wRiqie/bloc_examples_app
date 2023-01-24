@@ -1,4 +1,3 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'auth_model.dart';
@@ -19,7 +18,7 @@ class AuthModelAdapter extends TypeAdapter<AuthModel> {
     };
     return AuthModel(
       email: fields[0] as String,
-      password: fields[1] as String,
+      password: fields[1] as String?,
       accessToken: fields[2] as String?,
     );
   }

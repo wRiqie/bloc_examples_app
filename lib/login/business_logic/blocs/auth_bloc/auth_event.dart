@@ -7,3 +7,5 @@ class AuthSignin extends AuthEvent {
 
   AuthSignin(this.auth);
 }
+
+class AuthSigninWithGoogle extends AuthEvent {}

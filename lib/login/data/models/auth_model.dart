@@ -9,14 +9,14 @@ class AuthModel {
 
   
   @HiveField(1)
-  final String password;
+  final String? password;
   
   @HiveField(2)
   String? accessToken;
 
   AuthModel({
     required this.email,
-    required this.password,
+    this.password,
     this.accessToken,
   });
 

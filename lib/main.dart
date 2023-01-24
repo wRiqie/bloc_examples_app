@@ -3,27 +3,32 @@ import 'package:bloc_app/login/business_logic/cubits/checkbox_cubit.dart';
 import 'package:bloc_app/login/business_logic/cubits/password_obscure_cubit.dart';
 import 'package:bloc_app/login/core/dependency_injector/dependency_injector.dart';
 import 'package:bloc_app/login/data/provider/fake_api.dart';
+import 'package:bloc_app/login/data/provider/firebase_api.dart';
 import 'package:bloc_app/login/data/repositories/auth_repository.dart';
 import 'package:bloc_app/routes/app_routes.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'login/data/models/auth_model.dart';
 
-void main() async {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   await Hive.initFlutter();
 
   final di = DependencyInjector();
 
   di.register<FakeApi>(() => FakeApi());
-  di.register<AuthRepository>(() => AuthRepository(di.get()));
+  di.register<FirebaseApi>(() => FirebaseApi(FirebaseAuth.instance));
+  di.register<AuthRepository>(() => AuthRepository(di.get(), di.get()));
   di.register<AuthBloc>(() => AuthBloc(di.get()));
   di.register<CheckboxCubit>(() => CheckboxCubit());
   di.register<PasswordObscureCubit>(() => PasswordObscureCubit());
 
   Hive.registerAdapter<AuthModel>(AuthModelAdapter());
-
-  WidgetsFlutterBinding.ensureInitialized();
 
   runApp(const MyApp());
 }

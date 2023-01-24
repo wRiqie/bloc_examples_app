@@ -22,6 +22,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final state = await _signin(event);
       emit(state);
     });
+
+    on<AuthSigninWithGoogle>((event, emit) async {
+      emit(AuthLoading());
+      final state = await _signinWithGoogle();
+      emit(state);
+    });
   }
 
   // void _mapEventToState(AuthEvent event) async {
@@ -32,6 +38,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<AuthState> _signin(AuthSignin event) async {
     try {
       final response = await _repository.signin(auth: event.auth);
+      if (response.isSuccess) {
+        return AuthSuccess(response);
+      } else {
+        return AuthError(response.message);
+      }
+    } catch (e) {
+      return AuthError(e.toString());
+    }
+  }
+
+  Future<AuthState> _signinWithGoogle() async {
+    try {
+      final response = await _repository.signInWithGoogle();
       if (response.isSuccess) {
         return AuthSuccess(response);
       } else {
