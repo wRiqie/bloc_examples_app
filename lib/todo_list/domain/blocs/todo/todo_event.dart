@@ -1,23 +1,23 @@
-import 'package:bloc_app/todo_list/model/todo_model.dart';
+// import 'package:bloc_app/todo_list/model/todo_model.dart';
 
-abstract class TodoEvent {}
+// abstract class TodoEvent {}
 
-class TodoGetEvent extends TodoEvent {}
+// class TodoGetEvent extends TodoEvent {}
 
-class TodoAddEvent extends TodoEvent {
-  final TodoModel todo;
+// class TodoAddEvent extends TodoEvent {
+//   final TodoModel todo;
 
-  TodoAddEvent(this.todo);
-}
+//   TodoAddEvent(this.todo);
+// }
 
-class TodoDeleteEvent extends TodoEvent {
-  final int id;
+// class TodoDeleteEvent extends TodoEvent {
+//   final int id;
 
-  TodoDeleteEvent(this.id);
-}
+//   TodoDeleteEvent(this.id);
+// }
 
-class TodoUpdateEvent extends TodoEvent {
-  final TodoModel todo;
+// class TodoUpdateEvent extends TodoEvent {
+//   final TodoModel todo;
 
-  TodoUpdateEvent(this.todo);
-}
+//   TodoUpdateEvent(this.todo);
+// }

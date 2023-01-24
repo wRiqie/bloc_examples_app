@@ -1,10 +1,10 @@
-class TodoModel {
+class TodoEntity {
   int id;
   String title;
   String body;
   DateTime createdAt;
 
-  TodoModel({
+  TodoEntity({
     required this.id,
     required this.title,
     required this.body,
