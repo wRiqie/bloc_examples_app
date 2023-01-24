@@ -1,3 +1,5 @@
+import '../../shared/models/default_response_model.dart';
+
 abstract class DeleteTodoByIdRepository {
-  Future<int> call(int id);
+  Future<DefaultResponseModel<int>> call(int id);
 }

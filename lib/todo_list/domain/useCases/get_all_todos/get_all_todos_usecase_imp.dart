@@ -1,3 +1,4 @@
+import '../../../shared/models/default_response_model.dart';
 import '../../entities/todo_entity.dart';
 import '../../repositories/get_all_todos_repository.dart';
 import 'get_all_todos_usecase.dart';
@@ -8,5 +9,5 @@ class GetAllTodosUsecaseImp implements GetAllTodosUsecase {
   GetAllTodosUsecaseImp(this._getAllTodosRepository);
 
   @override
-  Future<List<TodoEntity>> call() => _getAllTodosRepository();
+  Future<DefaultResponseModel<List<TodoEntity>>> call() => _getAllTodosRepository();
 }
