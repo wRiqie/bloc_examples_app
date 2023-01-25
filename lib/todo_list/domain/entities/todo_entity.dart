@@ -1,13 +1,19 @@
+import 'package:hive/hive.dart';
+
+part 'todo_entity.g.dart';
+
+@HiveType(typeId: 1)
 class TodoEntity {
-  int id;
+  @HiveField(0)
+  int? id;
+  @HiveField(1)
   String title;
+  @HiveField(2)
   String body;
-  DateTime createdAt;
 
   TodoEntity({
-    required this.id,
+    this.id,
     required this.title,
     required this.body,
-    required this.createdAt,
   });
 }

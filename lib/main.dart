@@ -6,6 +6,7 @@ import 'package:bloc_app/login/data/provider/fake_api.dart';
 import 'package:bloc_app/login/data/provider/firebase_api.dart';
 import 'package:bloc_app/login/data/repositories/auth_repository.dart';
 import 'package:bloc_app/routes/app_routes.dart';
+import 'package:bloc_app/todo_list/domain/entities/todo_entity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,7 @@ Future<void> main() async {
   di.register<PasswordObscureCubit>(() => PasswordObscureCubit());
 
   Hive.registerAdapter<AuthModel>(AuthModelAdapter());
+  Hive.registerAdapter<TodoEntity>(TodoEntityAdapter());
 
   runApp(const MyApp());
 }

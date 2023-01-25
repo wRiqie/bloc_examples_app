@@ -7,11 +7,9 @@ class AuthModel {
   @HiveField(0)
   final String email;
 
-  
-  @HiveField(1)
   final String? password;
   
-  @HiveField(2)
+  @HiveField(1)
   String? accessToken;
 
   AuthModel({

@@ -9,7 +9,7 @@ class GetAllTodosRepositoryImpMock extends Mock
     implements GetAllTodosRepository {}
 
 void main() {
-  test('Expect get list of todos', () async {
+  test('should get list of todos', () async {
     final repository = GetAllTodosRepositoryImpMock();
     when(() => repository()).thenAnswer(
         (_) => Future.value(DefaultResponseModel(isSuccess: true, data: [
@@ -17,7 +17,6 @@ void main() {
                 id: 1,
                 title: 'title',
                 body: 'body',
-                createdAt: DateTime.now(),
               ),
             ])));
 
@@ -27,7 +26,7 @@ void main() {
     expect(todos.data?.first.id, 1);
   });
 
-  test('Expect get empty list of todos', () async {
+  test('should get empty list of todos', () async {
     final repository = GetAllTodosRepositoryImpMock();
     when(() => repository()).thenAnswer(
       (_) => Future.value(

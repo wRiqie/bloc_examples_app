@@ -1,35 +1,38 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_model.dart';
+part of 'todo_entity.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class AuthModelAdapter extends TypeAdapter<AuthModel> {
+class TodoEntityAdapter extends TypeAdapter<TodoEntity> {
   @override
-  final int typeId = 0;
+  final int typeId = 1;
 
   @override
-  AuthModel read(BinaryReader reader) {
+  TodoEntity read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return AuthModel(
-      email: fields[0] as String,
-      accessToken: fields[1] as String?,
+    return TodoEntity(
+      id: fields[0] as int?,
+      title: fields[1] as String,
+      body: fields[2] as String,
     );
   }
 
   @override
-  void write(BinaryWriter writer, AuthModel obj) {
+  void write(BinaryWriter writer, TodoEntity obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
-      ..write(obj.email)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.accessToken);
+      ..write(obj.title)
+      ..writeByte(2)
+      ..write(obj.body);
   }
 
   @override
@@ -38,7 +41,7 @@ class AuthModelAdapter extends TypeAdapter<AuthModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is AuthModelAdapter &&
+      other is TodoEntityAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

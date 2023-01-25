@@ -8,7 +8,7 @@ class DeleteTodoByIdRepositoryImpMock extends Mock
     implements DeleteTodoByIdRepository {}
 
 void main() {
-  test('expect delete todo by id with success', () async {
+  test('should delete todo by id with success', () async {
     final repository = DeleteTodoByIdRepositoryImpMock();
     when(
       () => repository(any()),
@@ -26,7 +26,7 @@ void main() {
     expect(res.data, 1);
   });
 
-  test('expect delete todo by id with error', () async {
+  test('should delete todo by id with error', () async {
     final repository = DeleteTodoByIdRepositoryImpMock();
     when(
       () => repository(any()),
