@@ -8,7 +8,6 @@ import 'package:bloc_app/login/business_logic/services/session_service.dart';
 import 'package:bloc_app/login/core/dependency_injector/dependency_injector.dart';
 import 'package:bloc_app/login/core/mixins/validations_mixin.dart';
 import 'package:bloc_app/login/data/models/auth_model.dart';
-import 'package:bloc_app/login/data/repositories/auth_repository.dart';
 import 'package:bloc_app/login/presentation/widgets/social_login_button.dart';
 import 'package:bloc_app/routes/app_routes.dart';
 import 'package:flutter/foundation.dart';

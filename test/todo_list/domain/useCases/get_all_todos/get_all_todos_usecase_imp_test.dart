@@ -1,12 +1,10 @@
 import 'package:bloc_app/todo_list/domain/entities/todo_entity.dart';
-import 'package:bloc_app/todo_list/domain/repositories/get_all_todos_repository.dart';
 import 'package:bloc_app/todo_list/domain/useCases/get_all_todos/get_all_todos_usecase_imp.dart';
-import 'package:bloc_app/todo_list/shared/models/default_response_model.dart';
+import 'package:bloc_app/todo_list/core/models/default_response_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class GetAllTodosRepositoryImpMock extends Mock
-    implements GetAllTodosRepository {}
+import '../../../../mocks.dart';
 
 void main() {
   test('should get list of todos', () async {

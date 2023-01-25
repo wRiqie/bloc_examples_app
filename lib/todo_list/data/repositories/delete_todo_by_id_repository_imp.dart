@@ -1,5 +1,5 @@
 import '../../domain/repositories/delete_todo_by_id_repository.dart';
-import '../../shared/models/default_response_model.dart';
+import '../../core/models/default_response_model.dart';
 
 class DeleteTodoByIdRepositoryImp implements DeleteTodoByIdRepository {
   @override

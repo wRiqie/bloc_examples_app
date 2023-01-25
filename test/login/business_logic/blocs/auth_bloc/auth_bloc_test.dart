@@ -28,7 +28,7 @@ void main() {
     });
 
     test('O estado inicial deve ser idle', () async {
-      expect(authBloc.state is AuthIdle, true);
+      expect(authBloc.state, isA<AuthIdle>());
     });
 
     blocTest(

@@ -1,4 +1,4 @@
-import '../../../shared/models/default_response_model.dart';
+import '../../../core/models/default_response_model.dart';
 import '../../entities/todo_entity.dart';
 import '../../repositories/get_all_todos_repository.dart';
 import 'get_all_todos_usecase.dart';

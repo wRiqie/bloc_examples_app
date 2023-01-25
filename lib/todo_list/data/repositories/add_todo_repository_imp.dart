@@ -1,6 +1,6 @@
 import '../../domain/entities/todo_entity.dart';
 import '../../domain/repositories/add_todo_repository.dart';
-import '../../shared/models/default_response_model.dart';
+import '../../core/models/default_response_model.dart';
 
 class AddTodoRepositoryImp implements AddTodoRepository {
   @override

@@ -1,7 +1,7 @@
 import 'package:bloc_app/todo_list/domain/entities/todo_entity.dart';
 import 'package:bloc_app/todo_list/domain/repositories/add_todo_repository.dart';
 import 'package:bloc_app/todo_list/domain/useCases/add_todo/add_todo_usecase_imp.dart';
-import 'package:bloc_app/todo_list/shared/models/default_response_model.dart';
+import 'package:bloc_app/todo_list/core/models/default_response_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

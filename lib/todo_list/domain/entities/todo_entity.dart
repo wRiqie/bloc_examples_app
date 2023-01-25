@@ -2,6 +2,7 @@ import 'package:hive/hive.dart';
 
 part 'todo_entity.g.dart';
 
+// Pode ter lógica
 @HiveType(typeId: 1)
 class TodoEntity {
   @HiveField(0)

@@ -2,7 +2,7 @@ import 'package:bloc_app/todo_list/data/datasources/get_all_todos_datasource.dar
 
 import '../../domain/entities/todo_entity.dart';
 import '../../domain/repositories/get_all_todos_repository.dart';
-import '../../shared/models/default_response_model.dart';
+import '../../core/models/default_response_model.dart';
 import '../dto/todo_dto.dart';
 
 class GetAllTodosRepositoryImp implements GetAllTodosRepository {
