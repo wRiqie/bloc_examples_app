@@ -11,12 +11,12 @@ class GetAllTodosRepositoryImp implements GetAllTodosRepository {
   GetAllTodosRepositoryImp(this._getAllTodosDataSource);
 
   @override
-  Future<DefaultResponseModel<List<TodoEntity>>> call() async {
-    final items = await _getAllTodosDataSource();
+  Future<DefaultResponseModel<List<TodoEntity>>> call(int page) async {
+    final items = await _getAllTodosDataSource(page);
 
     return DefaultResponseModel(
       isSuccess: true,
-      data: items.map((e) => TodoDto.fromMap(e)).toList(),
+      data: items,
     );
   }
 }

@@ -2,7 +2,12 @@ import '../../../domain/entities/todo_entity.dart';
 
 abstract class TodoEvent {}
 
-class TodoGetAllEvent extends TodoEvent {}
+class TodoGetAllEvent extends TodoEvent {
+  final int page;
+  final bool clear;
+
+  TodoGetAllEvent(this.page, this.clear);
+}
 
 class TodoAddEvent extends TodoEvent {
   final TodoEntity todo;

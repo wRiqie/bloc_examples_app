@@ -64,6 +64,15 @@ class LobbyScreen extends StatelessWidget {
                         });
                       },
                     ),
+                    _buildCard(
+                      context,
+                      color: Colors.red,
+                      title: 'Todo',
+                      icon: Icons.grid_view,
+                      onTap: () {
+                        Navigator.pushNamed(context, AppRoutes.todo);
+                      },
+                    ),
                   ],
                 ),
               ),

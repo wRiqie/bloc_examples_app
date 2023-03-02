@@ -9,5 +9,5 @@ class GetAllTodosUsecaseImp implements GetAllTodosUsecase {
   GetAllTodosUsecaseImp(this._getAllTodosRepository);
 
   @override
-  Future<DefaultResponseModel<List<TodoEntity>>> call() => _getAllTodosRepository();
+  Future<DefaultResponseModel<List<TodoEntity>>> call(int page) => _getAllTodosRepository(page);
 }

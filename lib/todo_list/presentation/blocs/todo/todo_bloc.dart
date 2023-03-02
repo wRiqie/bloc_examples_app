@@ -8,20 +8,37 @@ import 'todo_state.dart';
 class TodoBloc extends Bloc<TodoEvent, TodoState> {
   final GetAllTodosUsecase _getAllTodosUsecase;
 
-  TodoBloc(this._getAllTodosUsecase) : super(TodoInitialState()) {
-    on<TodoGetAllEvent>((event, emit) async {
-      emit(TodoLoadingState());
-      final res = await loadAllTodos();
-      emit(res);
-    });
+  TodoBloc(this._getAllTodosUsecase) : super(TodoState()) {
+    on<TodoGetAllEvent>(_mapGetAllEventToState);
   }
 
-  Future<TodoState> loadAllTodos() async {
-    final res = await _getAllTodosUsecase();
-    if(res.isSuccess) {
-      return TodoLoadedState(res.data ?? []);
-    } else {
-      return TodoErrorState(res.message);
+  void _mapGetAllEventToState(
+      TodoGetAllEvent event, Emitter<TodoState> emit) async {
+    event.clear
+        ? emit(state.copyWith(status: TodoStatus.loading))
+        : emit(state.copyWith(status: TodoStatus.loadingMore));
+    final response = await _getAllTodosUsecase(event.page);
+    if (response.isSuccess) {
+      if (event.clear) {
+        emit(state.copyWith(
+          status: TodoStatus.success,
+          todos: response.data,
+        ));
+      } else {
+        emit(state.copyWith(
+          status: TodoStatus.success,
+          todos: List.of(state.todos)..addAll(response.data ?? []),
+        ));
+      }
     }
   }
+
+  // Future<TodoState> loadAllTodos() async {
+  //   final res = await _getAllTodosUsecase();
+  //   if(res.isSuccess) {
+  //     return TodoLoadedState(res.data ?? []);
+  //   } else {
+  //     return TodoErrorState(res.message);
+  //   }
+  // }
 }
