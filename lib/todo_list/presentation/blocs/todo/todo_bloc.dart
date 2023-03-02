@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:bloc_app/todo_list/core/models/paginable_model.dart';
 
 import 'package:bloc_app/todo_list/domain/useCases/get_all_todos/get_all_todos_usecase.dart';
 
@@ -27,7 +28,11 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       } else {
         emit(state.copyWith(
           status: TodoStatus.success,
-          todos: List.of(state.todos)..addAll(response.data ?? []),
+          todos: Paginable(
+              totalItemsCount: response.data?.totalItemsCount ?? 0,
+              page: response.data?.page ?? 1,
+              items: List.of(state.todos?.items ?? [])
+                ..addAll(response.data?.items ?? [])),
         ));
       }
     }

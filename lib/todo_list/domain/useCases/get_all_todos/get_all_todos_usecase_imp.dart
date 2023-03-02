@@ -1,3 +1,5 @@
+import 'package:bloc_app/todo_list/core/models/paginable_model.dart';
+
 import '../../../core/models/default_response_model.dart';
 import '../../entities/todo_entity.dart';
 import '../../repositories/get_all_todos_repository.dart';
@@ -9,5 +11,5 @@ class GetAllTodosUsecaseImp implements GetAllTodosUsecase {
   GetAllTodosUsecaseImp(this._getAllTodosRepository);
 
   @override
-  Future<DefaultResponseModel<List<TodoEntity>>> call(int page) => _getAllTodosRepository(page);
+  Future<DefaultResponseModel<Paginable<TodoEntity>>> call(int page) => _getAllTodosRepository(page);
 }

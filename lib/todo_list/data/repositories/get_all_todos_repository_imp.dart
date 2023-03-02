@@ -1,3 +1,4 @@
+import 'package:bloc_app/todo_list/core/models/paginable_model.dart';
 import 'package:bloc_app/todo_list/data/datasources/get_all_todos_datasource.dart';
 
 import '../../domain/entities/todo_entity.dart';
@@ -11,7 +12,7 @@ class GetAllTodosRepositoryImp implements GetAllTodosRepository {
   GetAllTodosRepositoryImp(this._getAllTodosDataSource);
 
   @override
-  Future<DefaultResponseModel<List<TodoEntity>>> call(int page) async {
+  Future<DefaultResponseModel<Paginable<TodoEntity>>> call(int page) async {
     final items = await _getAllTodosDataSource(page);
 
     return DefaultResponseModel(

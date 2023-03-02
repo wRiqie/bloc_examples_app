@@ -12,13 +12,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int page = 1;
   final scrollController = ScrollController();
 
   void scrollListener() {
     if (scrollController.offset >= scrollController.position.maxScrollExtent) {
-      page++;
-      BlocProvider.of<TodoBloc>(context).add(TodoGetAllEvent(page, false));
+      BlocProvider.of<TodoBloc>(context).add(TodoGetAllEvent(
+          BlocProvider.of<TodoBloc>(context).state.todos?.nextPage ?? 1,
+          false));
     }
   }
 
@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
           if (state.status.isSuccess || state.status.isLoadingMore) {
             return ListView.builder(
               controller: scrollController,
-              itemCount: state.todos.length,
+              itemCount: state.todos?.items.length,
               itemBuilder: (context, index) {
                 return ListTile(
                   tileColor: index.isOdd ? Colors.grey[200] : Colors.white,
@@ -77,11 +77,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: const TextStyle(fontSize: 26, color: Colors.black),
                   ),
                   title: Text(
-                    state.todos[index].title,
+                    state.todos?.items[index].title ?? '',
                     style: const TextStyle(fontSize: 26, color: Colors.black),
                   ),
                   subtitle: Text(
-                    state.todos[index].body,
+                    state.todos?.items[index].body ?? '',
                     style: const TextStyle(fontSize: 26, color: Colors.black),
                   ),
                   trailing: const Icon(

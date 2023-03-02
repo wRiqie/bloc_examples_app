@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:bloc_app/todo_list/core/models/paginable_model.dart';
+
 import '../../../domain/entities/todo_entity.dart';
 
 // abstract class TodoState {}
@@ -34,17 +36,17 @@ enum TodoStatus {
 
 class TodoState {
   final TodoStatus status;
-  final List<TodoEntity> todos;
+  final Paginable<TodoEntity>? todos;
 
   TodoState({
     this.status = TodoStatus.idle,
-    this.todos = const [],
+    this.todos,
   });
   
 
   TodoState copyWith({
     TodoStatus? status,
-    List<TodoEntity>? todos,
+    Paginable<TodoEntity>? todos,
   }) {
     return TodoState(
       status: status ?? this.status,
